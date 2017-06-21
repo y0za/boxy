@@ -1,0 +1,16 @@
+{
+  "name": "boxy",
+  "version": "0.0.1",
+  "description": "convert JSON to box-like appearance",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && ava dist/test/**/*.js"
+  },
+  "author": "y0za",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "typescript": "^2.3.4"
+  }
+}
