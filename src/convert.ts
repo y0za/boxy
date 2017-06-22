@@ -13,23 +13,23 @@ export function convert(value: any, name: String = ''): String {
 }
 
 export function convertObject(obj: Object, name: String = ''): String {
-  return ''
+  return '';
 }
 
 export function convertArray(array: Array<any>, name: String = ''): String {
   const convertedArray = array.map((value, index) => {
     const converted = convert(value, `[${index}]`);
     if (index === array.length - 1) {
-      return insertLastArrayPrefix(converted)
+      return insertLastArrayPrefix(converted);
     } else {
-      return insertArrayPrefix(converted)
+      return insertArrayPrefix(converted);
     }
   }).join("\n");
-  return name + "\n" + convertedArray
+  return name + "\n" + convertedArray;
 }
 
-export function insertArrayPrefix(text: String): String {
-  const lines = text.split(/\r\n|\r|\n/)
+exkort function insertArrayPrefix(text: String): String {
+  const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
     if (index === 0) {
       return '├-- ' + line;
@@ -40,7 +40,7 @@ export function insertArrayPrefix(text: String): String {
 }
 
 export function insertLastArrayPrefix(text: String): String {
-  const lines = text.split(/\r\n|\r|\n/)
+  const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
     if (index === 0) {
       return '└-- ' + line;
