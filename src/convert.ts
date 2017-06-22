@@ -28,7 +28,7 @@ export function convertArray(array: Array<any>, name: String = ''): String {
   return name + "\n" + convertedArray;
 }
 
-exkort function insertArrayPrefix(text: String): String {
+export function insertArrayPrefix(text: String): String {
   const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
     if (index === 0) {
