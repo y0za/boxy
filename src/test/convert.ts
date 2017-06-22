@@ -2,6 +2,7 @@ import test from 'ava';
 
 import {
   convert,
+  convertArray,
   insertArrayPrefix,
   insertLastArrayPrefix,
 } from '../convert';
@@ -38,6 +39,20 @@ test('convert boolean value', (t) => {
   const name = 'foo';
   const expected = 'foo: true';
   t.is(convert(value, name), expected);
+});
+
+test('convertArray single item array', (t) => {
+  const array = ['bar'];
+  const name = 'foo';
+  const expected = "foo\n└-- [0]: bar";
+  t.is(convertArray(array, name), expected);
+});
+
+test('convertArray multiple item array', (t) => {
+  const array = ['bar', 'baz'];
+  const name = 'foo';
+  const expected = "foo\n├-- [0]: bar\n└-- [1]: baz";
+  t.is(convertArray(array, name), expected);
 });
 
 test('insertArrayPrefix single line', (t) => {

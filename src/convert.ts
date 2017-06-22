@@ -17,7 +17,15 @@ export function convertObject(obj: Object, name: String = ''): String {
 }
 
 export function convertArray(array: Array<any>, name: String = ''): String {
-  return ''
+  const convertedArray = array.map((value, index) => {
+    const converted = convert(value, `[${index}]`);
+    if (index === array.length - 1) {
+      return insertLastArrayPrefix(converted)
+    } else {
+      return insertArrayPrefix(converted)
+    }
+  }).join("\n");
+  return name + "\n" + convertedArray
 }
 
 export function insertArrayPrefix(text: String): String {
