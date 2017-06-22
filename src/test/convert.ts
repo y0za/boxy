@@ -44,37 +44,37 @@ test('convert boolean value', (t) => {
 test('convertArray single item array', (t) => {
   const array = ['bar'];
   const name = 'foo';
-  const expected = "foo\n└-- [0]: bar";
+  const expected = "foo\n└── [0]: bar";
   t.is(convertArray(array, name), expected);
 });
 
 test('convertArray multiple item array', (t) => {
   const array = ['bar', 'baz'];
   const name = 'foo';
-  const expected = "foo\n├-- [0]: bar\n└-- [1]: baz";
+  const expected = "foo\n├── [0]: bar\n└── [1]: baz";
   t.is(convertArray(array, name), expected);
 });
 
 test('insertArrayPrefix single line', (t) => {
   const text = 'foo';
-  const expected = '├-- foo';
+  const expected = '├── foo';
   t.is(insertArrayPrefix(text), expected);
 });
 
 test('insertArrayPrefix multiple line', (t) => {
   const text = "foo\nbar";
-  const expected = "├-- foo\n|   bar";
+  const expected = "├── foo\n│   bar";
   t.is(insertArrayPrefix(text), expected);
 });
 
 test('insertArrayPrefix single line', (t) => {
   const text = 'foo';
-  const expected = '└-- foo';
+  const expected = '└── foo';
   t.is(insertLastArrayPrefix(text), expected);
 });
 
 test('insertLastArrayPrefix multiple line', (t) => {
   const text = "foo\nbar";
-  const expected = "└-- foo\n    bar";
+  const expected = "└── foo\n    bar";
   t.is(insertLastArrayPrefix(text), expected);
 });
