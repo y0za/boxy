@@ -1,4 +1,4 @@
-export function convert(value: any, name: String = ''): String {
+export function convert(value: any, name: string = ''): string {
   if (Array.isArray(value)) {
     return convertArray(value as Array<any>, name);
   } else if (typeof value === 'object' && value !== null) {
@@ -12,11 +12,11 @@ export function convert(value: any, name: String = ''): String {
   }
 }
 
-export function convertObject(obj: Object, name: String = ''): String {
+export function convertObject(obj: Object, name: string = ''): string {
   return '';
 }
 
-export function convertArray(array: Array<any>, name: String = ''): String {
+export function convertArray(array: Array<any>, name: string = ''): string {
   const convertedArray = array.map((value, index) => {
     const converted = convert(value, `[${index}]`);
     if (index === array.length - 1) {
@@ -28,7 +28,7 @@ export function convertArray(array: Array<any>, name: String = ''): String {
   return name + "\n" + convertedArray;
 }
 
-export function insertArrayPrefix(text: String): String {
+export function insertArrayPrefix(text: string): string {
   const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
     if (index === 0) {
@@ -39,7 +39,7 @@ export function insertArrayPrefix(text: String): String {
   }).join("\n");
 }
 
-export function insertLastArrayPrefix(text: String): String {
+export function insertLastArrayPrefix(text: string): string {
   const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
     if (index === 0) {
