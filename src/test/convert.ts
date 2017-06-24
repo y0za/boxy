@@ -3,6 +3,7 @@ import test from 'ava';
 import {
   convert,
   convertArray,
+  encloseText,
   insertArrayPrefix,
   insertLastArrayPrefix,
 } from '../convert';
@@ -39,6 +40,27 @@ test('convert boolean value', (t) => {
   const name = 'foo';
   const expected = 'foo: true';
   t.is(convert(value, name), expected);
+});
+
+test('encloseText empty text', (t) => {
+  const text = '';
+  const name = 'foo';
+  const expected = "foo ──┐\n│     │\n└─────┘";
+  t.is(encloseText(text, name), expected);
+});
+
+test('encloseText multiple lines text', (t) => {
+  const text = "bar: 123\nbaz: 234";
+  const name = 'foo';
+  const expected = "foo ───────┐\n│ bar: 123 │\n│ baz: 234 │\n└──────────┘";
+  t.is(encloseText(text, name), expected);
+});
+
+test('encloseText long name', (t) => {
+  const text = 'bar: 123';
+  const name = 'long long long name';
+  const expected = "long long long name ──┐\n│ bar: 123            │\n└─────────────────────┘";
+  t.is(encloseText(text, name), expected);
 });
 
 test('convertArray single item array', (t) => {

@@ -16,6 +16,29 @@ export function convertObject(obj: Object, name: string = ''): string {
   return '';
 }
 
+export function encloseText(text: string, name: string = ''): string {
+  const lines = text.split(/\r\n|\r|\n/);
+  const maxLength = lines.reduce((length, line) => {
+    if (line.length > length) {
+      return line.length
+    } else {
+      return length
+    }
+  }, name.length);
+
+  const upperSpaceLength = maxLength - name.length + 2;
+  const upperFrame = name + ' ' + '─'.repeat(upperSpaceLength) + '┐';
+  const enclosedLines = lines.map((line) => {
+    const spaceLength = maxLength - line.length;
+    return '│ ' + line + ' '.repeat(spaceLength) + ' │';
+  });
+  const lowerFrame = '└' + '─'.repeat(maxLength + 2) + '┘';
+
+  return upperFrame + "\n"
+       + enclosedLines.join("\n") + "\n"
+       + lowerFrame;
+}
+
 export function convertArray(array: Array<any>, name: string = ''): string {
   const convertedArray = array.map((value, index) => {
     const converted = convert(value, `[${index}]`);
