@@ -12,8 +12,13 @@ export function convert(value: any, name: string = ''): string {
   }
 }
 
-export function convertObject(obj: Object, name: string = ''): string {
-  return '';
+export function convertObject(obj: object, name: string = ''): string {
+  const properties = Object.keys(obj).map((name, index) => {
+    const value = (obj as any)[name];
+    return convert(value, name);
+  });
+  const content = properties.join("\n");
+  return encloseText(content, name);
 }
 
 export function encloseText(text: string, name: string = ''): string {

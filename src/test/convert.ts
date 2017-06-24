@@ -3,6 +3,7 @@ import test from 'ava';
 import {
   convert,
   convertArray,
+  convertObject,
   encloseText,
   insertArrayPrefix,
   insertLastArrayPrefix,
@@ -40,6 +41,20 @@ test('convert boolean value', (t) => {
   const name = 'foo';
   const expected = 'foo: true';
   t.is(convert(value, name), expected);
+});
+
+test('convertObject empty object', (t) => {
+  const obj = {};
+  const name = 'foo';
+  const expected = "foo ──┐\n│     │\n└─────┘";
+  t.is(convertObject(obj, name), expected);
+});
+
+test('convertObject single property object', (t) => {
+  const obj = { bar: 123 };
+  const name = 'foo';
+  const expected = "foo ───────┐\n│ bar: 123 │\n└──────────┘";
+  t.is(convertObject(obj, name), expected);
 });
 
 test('encloseText empty text', (t) => {
