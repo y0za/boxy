@@ -2,7 +2,7 @@
   "name": "boxy",
   "version": "0.0.1",
   "description": "convert JSON to box-like appearance",
-  "main": "index.js",
+  "bin": "dist/cli.js",
   "scripts": {
     "build": "tsc",
     "test": "tsc && ava dist/test/**/*.js"
