@@ -10,7 +10,11 @@
   "author": "y0za",
   "license": "MIT",
   "devDependencies": {
+    "@types/commander": "^2.9.1",
     "ava": "^0.19.1",
     "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "commander": "^2.10.0"
   }
 }
