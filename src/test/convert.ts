@@ -7,6 +7,7 @@ import {
   encloseText,
   createUpperFrame,
   appendArrayPrefix,
+  appendFirstArrayPrefix,
   appendLastArrayPrefix,
 } from '../convert';
 
@@ -131,6 +132,18 @@ test('appendArrayPrefix multiple line', (t) => {
   const text = "foo\nbar";
   const expected = "├── foo\n│   bar";
   t.is(appendArrayPrefix(text), expected);
+});
+
+test('appendFirstArrayPrefix single line', (t) => {
+  const text = 'foo';
+  const expected = '┌── foo';
+  t.is(appendFirstArrayPrefix(text), expected);
+});
+
+test('appendFirstArrayPrefix multiple line', (t) => {
+  const text = "foo\nbar";
+  const expected = "┌── foo\n│   bar";
+  t.is(appendFirstArrayPrefix(text), expected);
 });
 
 test('appendLastArrayPrefix single line', (t) => {

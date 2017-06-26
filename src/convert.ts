@@ -80,6 +80,17 @@ export function appendArrayPrefix(text: string): string {
   }).join("\n");
 }
 
+export function appendFirstArrayPrefix(text: string): string {
+  const lines = text.split(/\r\n|\r|\n/);
+  return lines.map((line, index) => {
+    if (index === 0) {
+      return '┌── ' + line;
+    } else {
+      return '│   ' + line;
+    }
+  }).join("\n");
+}
+
 export function appendLastArrayPrefix(text: string): string {
   const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
