@@ -122,6 +122,27 @@ test('convertArray no item array', (t) => {
   t.is(convertArray(array, name), expected);
 });
 
+test('convertArray empty name and no item array', (t) => {
+  const array = new Array();
+  const name = '';
+  const expected = '[]';
+  t.is(convertArray(array, name), expected);
+});
+
+test('convertArray empty name and single item array', (t) => {
+  const array = ['bar'];
+  const name = '';
+  const expected = '[0]: bar';
+  t.is(convertArray(array, name), expected);
+});
+
+test('convertArray empty name and multiple item array', (t) => {
+  const array = ['bar', 'baz', 'quz'];
+  const name = '';
+  const expected = "┌── [0]: bar\n├── [1]: baz\n└── [2]: quz";
+  t.is(convertArray(array, name), expected);
+});
+
 test('appendArrayPrefix single line', (t) => {
   const text = 'foo';
   const expected = '├── foo';

@@ -55,6 +55,33 @@ export function createUpperFrame(width: number, name: string = ''): string {
 }
 
 export function convertArray(array: Array<any>, name: string = ''): string {
+  if (name === '') {
+    return convertArrayNoName(array);
+  } else {
+    return convertArrayWithName(array, name);
+  }
+}
+
+export function convertArrayNoName(array: Array<any>) {
+  if (array.length === 0) {
+    return '[]';
+  }
+  if (array.length === 1) {
+    return convert(array[0], '[0]');
+  }
+  return array.map((value, index) => {
+    const converted = convert(value, `[${index}]`);
+    if (index === 0) {
+      return appendFirstArrayPrefix(converted);
+    } else if (index === array.length - 1) {
+      return appendLastArrayPrefix(converted);
+    } else {
+      return appendArrayPrefix(converted);
+    }
+  }).join("\n");
+}
+
+export function convertArrayWithName(array: Array<any>, name: string) {
   if (array.length === 0) {
     return name + ': []';
   }
