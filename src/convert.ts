@@ -23,7 +23,7 @@ export function convertObject(obj: object, name: string = ''): string {
 
 export function encloseText(text: string, name: string = ''): string {
   const lines = text.split(/\r\n|\r|\n/);
-  const maxLength = lines.reduce((length, line) => {
+  const innerWidth = lines.reduce((length, line) => {
     if (line.length > length) {
       return line.length
     } else {
@@ -31,17 +31,27 @@ export function encloseText(text: string, name: string = ''): string {
     }
   }, name.length);
 
-  const upperSpaceLength = maxLength - name.length + 2;
-  const upperFrame = name + ' ' + '─'.repeat(upperSpaceLength) + '┐';
+  const width = innerWidth + 4;
+  const upperFrame = createUpperFrame(width, name);
   const enclosedLines = lines.map((line) => {
-    const spaceLength = maxLength - line.length;
+    const spaceLength = innerWidth - line.length;
     return '│ ' + line + ' '.repeat(spaceLength) + ' │';
   });
-  const lowerFrame = '└' + '─'.repeat(maxLength + 2) + '┘';
+  const lowerFrame = '└' + '─'.repeat(width - 2) + '┘';
 
   return upperFrame + "\n"
        + enclosedLines.join("\n") + "\n"
        + lowerFrame;
+}
+
+export function createUpperFrame(width: number, name: string = ''): string {
+  if (name === '') {
+    const edgeLength = width - 2;
+    return '┌' + '─'.repeat(edgeLength) + '┐';
+  } else {
+    const edgeLength = width - name.length - 2;
+    return name + ' ' + '─'.repeat(edgeLength) + '┐';
+  }
 }
 
 export function convertArray(array: Array<any>, name: string = ''): string {

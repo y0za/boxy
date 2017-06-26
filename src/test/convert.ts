@@ -5,6 +5,7 @@ import {
   convertArray,
   convertObject,
   encloseText,
+  createUpperFrame,
   appendArrayPrefix,
   appendLastArrayPrefix,
 } from '../convert';
@@ -76,6 +77,27 @@ test('encloseText long name', (t) => {
   const name = 'long long long name';
   const expected = "long long long name ──┐\n│ bar: 123            │\n└─────────────────────┘";
   t.is(encloseText(text, name), expected);
+});
+
+test('encloseText empty name', (t) => {
+  const text = 'bar: 123';
+  const name = '';
+  const expected = "┌──────────┐\n│ bar: 123 │\n└──────────┘";
+  t.is(encloseText(text, name), expected);
+});
+
+test('createUpperFrame empty name', (t) => {
+  const width = 10;
+  const name = '';
+  const expected = '┌────────┐';
+  t.is(createUpperFrame(width, name), expected);
+});
+
+test('createUpperFrame not empty name', (t) => {
+  const width = 10;
+  const name = 'foo';
+  const expected = 'foo ─────┐';
+  t.is(createUpperFrame(width, name), expected);
 });
 
 test('convertArray single item array', (t) => {
