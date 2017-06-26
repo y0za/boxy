@@ -114,6 +114,13 @@ test('convertArray multiple item array', (t) => {
   t.is(convertArray(array, name), expected);
 });
 
+test('convertArray no item array', (t) => {
+  const array = new Array();
+  const name = 'foo';
+  const expected = 'foo: []';
+  t.is(convertArray(array, name), expected);
+});
+
 test('appendArrayPrefix single line', (t) => {
   const text = 'foo';
   const expected = '├── foo';

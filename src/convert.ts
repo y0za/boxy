@@ -55,6 +55,9 @@ export function createUpperFrame(width: number, name: string = ''): string {
 }
 
 export function convertArray(array: Array<any>, name: string = ''): string {
+  if (array.length === 0) {
+    return name + ': []';
+  }
   const convertedArray = array.map((value, index) => {
     const converted = convert(value, `[${index}]`);
     if (index === array.length - 1) {
