@@ -50,13 +50,13 @@ export function convertArray(array: Array<any>, name: string = ''): string {
     if (index === array.length - 1) {
       return insertLastArrayPrefix(converted);
     } else {
-      return insertArrayPrefix(converted);
+      return appendArrayPrefix(converted);
     }
   }).join("\n");
   return name + "\n" + convertedArray;
 }
 
-export function insertArrayPrefix(text: string): string {
+export function appendArrayPrefix(text: string): string {
   const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
     if (index === 0) {

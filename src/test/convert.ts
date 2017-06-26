@@ -5,7 +5,7 @@ import {
   convertArray,
   convertObject,
   encloseText,
-  insertArrayPrefix,
+  appendArrayPrefix,
   insertLastArrayPrefix,
 } from '../convert';
 
@@ -92,16 +92,16 @@ test('convertArray multiple item array', (t) => {
   t.is(convertArray(array, name), expected);
 });
 
-test('insertArrayPrefix single line', (t) => {
+test('appendArrayPrefix single line', (t) => {
   const text = 'foo';
   const expected = '├── foo';
-  t.is(insertArrayPrefix(text), expected);
+  t.is(appendArrayPrefix(text), expected);
 });
 
-test('insertArrayPrefix multiple line', (t) => {
+test('appendArrayPrefix multiple line', (t) => {
   const text = "foo\nbar";
   const expected = "├── foo\n│   bar";
-  t.is(insertArrayPrefix(text), expected);
+  t.is(appendArrayPrefix(text), expected);
 });
 
 test('insertArrayPrefix single line', (t) => {
