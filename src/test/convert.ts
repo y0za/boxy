@@ -6,7 +6,7 @@ import {
   convertObject,
   encloseText,
   appendArrayPrefix,
-  insertLastArrayPrefix,
+  appendLastArrayPrefix,
 } from '../convert';
 
 test('convert string value', (t) => {
@@ -104,14 +104,14 @@ test('appendArrayPrefix multiple line', (t) => {
   t.is(appendArrayPrefix(text), expected);
 });
 
-test('insertArrayPrefix single line', (t) => {
+test('appendLastArrayPrefix single line', (t) => {
   const text = 'foo';
   const expected = '└── foo';
-  t.is(insertLastArrayPrefix(text), expected);
+  t.is(appendLastArrayPrefix(text), expected);
 });
 
-test('insertLastArrayPrefix multiple line', (t) => {
+test('appendLastArrayPrefix multiple line', (t) => {
   const text = "foo\nbar";
   const expected = "└── foo\n    bar";
-  t.is(insertLastArrayPrefix(text), expected);
+  t.is(appendLastArrayPrefix(text), expected);
 });

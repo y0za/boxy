@@ -48,7 +48,7 @@ export function convertArray(array: Array<any>, name: string = ''): string {
   const convertedArray = array.map((value, index) => {
     const converted = convert(value, `[${index}]`);
     if (index === array.length - 1) {
-      return insertLastArrayPrefix(converted);
+      return appendLastArrayPrefix(converted);
     } else {
       return appendArrayPrefix(converted);
     }
@@ -67,7 +67,7 @@ export function appendArrayPrefix(text: string): string {
   }).join("\n");
 }
 
-export function insertLastArrayPrefix(text: string): string {
+export function appendLastArrayPrefix(text: string): string {
   const lines = text.split(/\r\n|\r|\n/);
   return lines.map((line, index) => {
     if (index === 0) {
