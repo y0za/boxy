@@ -7,19 +7,19 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: projectname-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: projectname-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Checking Versions
           command: |
             node --version
-            npm --version
+            yarn --version
       - run:
           name: Install dependencies
-          command: npm install
+          command: yarn install
       - run:
           name: Test
-          command: npm test
+          command: yarn test
       - save_cache:
-          key: projectname-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: projectname-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/boxy/node_modules
