@@ -7,6 +7,10 @@
     "build": "tsc",
     "test": "tsc && ava dist/test/**/*.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y0za/boxy.git"
+  },
   "author": "y0za",
   "license": "MIT",
   "ava": {
