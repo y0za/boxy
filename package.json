@@ -13,6 +13,9 @@
   },
   "author": "y0za",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/y0za/boxy/issues"
+  },
   "ava": {
     "babel": {
       "presets": []
