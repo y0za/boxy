@@ -1,8 +1,10 @@
 {
-  "name": "boxy",
+  "name": "@y0za/boxy",
   "version": "0.0.1",
   "description": "convert JSON to box-like appearance",
-  "bin": "dist/cli.js",
+  "bin": {
+    "boxy": "dist/cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "test": "tsc && ava dist/test/**/*.js"
