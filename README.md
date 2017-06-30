@@ -8,5 +8,43 @@ convert JSON to box-like appearance
 $ npm install -g @y0za/boxy
 ```
 
+## Usage
+sample.json content
+```json
+{
+  "object": {
+    "text": "some text",
+    "number": 123,
+    "nested": {
+      "bool": true,
+      "null": null
+    },
+    "array": [
+      "first",
+      "second",
+      "third"
+    ]
+  }
+}
+```
+
+```console
+$ boxy sample.json
+┌─────────────────────┐
+│ object ───────────┐ │
+│ │ text: some text │ │
+│ │ number: 123     │ │
+│ │ nested ──────┐  │ │
+│ │ │ bool: true │  │ │
+│ │ │ null: null │  │ │
+│ │ └────────────┘  │ │
+│ │ array           │ │
+│ │ ├── [0]: first  │ │
+│ │ ├── [1]: second │ │
+│ │ └── [2]: third  │ │
+│ └─────────────────┘ │
+└─────────────────────┘
+```
+
 ## License
 MIT License
