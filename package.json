@@ -7,7 +7,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "tsc && ava dist/test/**/*.js"
+    "test": "tsc && ava dist/test/**/*.js",
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
