@@ -3,5 +3,10 @@
 
 convert JSON to box-like appearance
 
+## Installation
+```console
+$ npm install -g @y0za/boxy
+```
+
 ## License
 MIT License
