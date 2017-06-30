@@ -28,7 +28,7 @@ function cli(args: Array<string>): number {
 }
 
 program
-  .version('0.0.2')
+  .version('0.0.3')
   .usage('<file>')
   .parse(process.argv);
 

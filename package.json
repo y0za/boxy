@@ -1,6 +1,6 @@
 {
   "name": "@y0za/boxy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "convert JSON to box-like appearance",
   "bin": {
     "boxy": "dist/cli.js"
